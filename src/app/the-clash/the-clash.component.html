@@ -1,0 +1,55 @@
+<div class="background">
+  <div class="bubbles" *ngIf="names == null">
+    <div class="raccoon-bubbla">
+      <h3 class="raccoon-text" *ngIf="!greet">
+        Howdy, stranger. Haven't seen your face around here before. What's your
+        name?
+      </h3>
+      <h3
+        class="raccoon-text-alright"
+        *ngIf="greet && !foodFirstChoice == true"
+      >
+        Alright {{ nameInput }}, what can I do you for?
+      </h3>
+      <h3 class="raccoon-text-good-choice" *ngIf="foodFirstChoice == true">
+        {{ userFood }}... Good choice old sport!
+      </h3>
+    </div>
+    <div class="user-bubbla">
+      <form class="user-form" *ngIf="!greet">
+        <label for="firstName"></label>
+        <input
+          class="input-name"
+          type="text"
+          id="firstName"
+          placeholder="My name is..."
+          (keyup)="keyUpName($event)"
+        />
+      </form>
+      <button class="save-name" (click)="saveNames()" *ngIf="!greet">
+        <span>Done!</span>
+      </button>
+      <app-menu
+        class="food-menu"
+        [showFood]="greet"
+        (foodSelected)="foodSelected($event)"
+      ></app-menu>
+    </div>
+  </div>
+  <div class="hi-again" *ngIf="names">
+    <div *ngIf="names && usual !== true">
+      <h3 class="hi-again-text">Hello again, {{ names.firstname }}!</h3>
+    </div>
+    <h3 class="raccoon-text-good-choice-lastest" *ngIf="usual === true">
+      {{ userFood.food }} again {{ names.firstname }}. Good choice old sport!
+    </h3>
+  </div>
+  <div class="user-bubbla-again" *ngIf="names">
+    <button class="never-been-here" (click)="removeFunction()" *ngIf="names">
+      I have never been here!
+    </button>
+    <button class="the-usual" *ngIf="names" (click)="theUsual()">
+      The usual!
+    </button>
+  </div>
+</div>

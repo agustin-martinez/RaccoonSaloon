@@ -1,0 +1,17 @@
+<section
+  id="food-container"
+  *ngIf="showFood"
+  id="food"
+  (change)="chooseFood($event)"
+>
+  <select>
+    <option disabled
+      >Food?<!--  Where we're going, we need food. (Doc) --></option
+    >
+    <option value="McFly Hat">McFly Hat Soup</option>
+    <option value="Tannen Ribs">Tannen Ribs</option>
+    <option value="Dr.Brown">Dr.Brown</option>
+    <option value="Ms.Clara Clayton">Ms.Clara Clayton</option>
+  </select>
+  <p class="food-quote">Food? Where we're going, we need food.</p>
+</section>
